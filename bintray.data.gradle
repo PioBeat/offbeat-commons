@@ -1,0 +1,23 @@
+ext {
+    bintrayRepo = 'offbeat-pioneer-maven'
+    bintrayName = 'offbeat-commons'
+
+    publishedGroupId = 'net.offbeat-pioneer.android'
+    libraryName = 'OffbeatCommon'
+    artifact = 'offbeat-commons' // equal to the name of the Android Studio library module
+
+    libraryDescription = ''
+    libraryVersion = '0.3'
+    libraryVersionCode = 1
+
+    siteUrl = 'https://github.com/PioBeat/Offbeat-Common'
+    gitUrl = 'https://github.com/PioBeat/Offbeat-Common.git'
+
+    developerId = 'piobeat'
+    developerName = 'Dominik Grzelak'
+    developerEmail = ''
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}

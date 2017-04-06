@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageview_empty"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:layout_margin="0dp"
+        android:foregroundGravity="top"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/transparent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/dialog_layout_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+
+        <net.offbeatpioneer.android.components.OffbeatTextView
+            android:id="@+id/text_dialog_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Placeholder"
+            android:textColor="#ff000000"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginTop="24dp"
+        android:gravity="center|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_layout_text">
+
+
+        <net.offbeatpioneer.android.components.OffbeatButton
+            android:id="@+id/btn_dialog_ok"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_margin="4dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0.8"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Okay"
+            android:textColor="#ffffffff"
+            android:textSize="24sp" />
+    </LinearLayout>
+</LinearLayout>

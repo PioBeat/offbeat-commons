@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OffbeatTextView">
+        <attr name="font" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="LabeledTextView">
+        <attr name="label" format="string" localization="suggested" />
+        <attr name="text" format="string" localization="suggested" />
+        <attr name="labelFontSize" format="dimension" />
+        <attr name="textFontSize" format="dimension" />
+        <attr name="labelColor" format="color" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+</resources>

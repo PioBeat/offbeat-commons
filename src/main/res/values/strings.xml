@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Components</string>
+
+    <string name="textViewFont" translatable="false">amaticBold.ttf</string>
+    <string name="textViewFont2" translatable="false">BebasNeueRegular.ttf</string>
+
+    <string name="font_bold_Toolbar" translatable="false">archisticoBold.ttf</string>
+    <string name="font_normal_Toolbar" translatable="false">archisticoSimple.ttf</string>
+</resources>
