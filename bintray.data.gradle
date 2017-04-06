@@ -10,8 +10,8 @@ ext {
     libraryVersion = '0.3'
     libraryVersionCode = 1
 
-    siteUrl = 'https://github.com/PioBeat/Offbeat-Common'
-    gitUrl = 'https://github.com/PioBeat/Offbeat-Common.git'
+    siteUrl = 'https://github.com/PioBeat/offbeat-commons'
+    gitUrl = 'https://github.com/PioBeat/offbeat-commons.git'
 
     developerId = 'piobeat'
     developerName = 'Dominik Grzelak'
