@@ -10,7 +10,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class PreferenceManager {
     private static PreferenceManager ourInstance = new PreferenceManager();
-    public static String PREFERENCE_FILE = "OFFBEAT_CONF";
+    public static String PREFERENCE_FILE = "APP_PREFERENCES";
 
     final public static int VALUE_STRING = 0;
     final public static int VALUE_INT = 1;
@@ -22,12 +22,16 @@ public class PreferenceManager {
 
     SharedPreferences sharedPreferences;
 
-    public synchronized static PreferenceManager getInstance(Context context) {
-        if (ourInstance.context != context) {
-            ourInstance.context = context;
-            ourInstance.sharedPreferences = context.getSharedPreferences(PREFERENCE_FILE, MODE_PRIVATE);
-        }
+    public synchronized static PreferenceManager getInstance(Context context, String preferencesFile) {
+//        if (ourInstance.context != context) {
+//            ourInstance.context = context;
+        ourInstance.sharedPreferences = context.getSharedPreferences(preferencesFile, MODE_PRIVATE);
+//        }
         return ourInstance;
+    }
+
+    public synchronized static PreferenceManager getInstance(Context context) {
+        return PreferenceManager.getInstance(context, PREFERENCE_FILE);
     }
 
     private PreferenceManager() {
