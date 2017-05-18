@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_good_pin_24dp">
+
+    <target
+        android:name="circle"
+        android:animation="@anim/circle_animation" />
+
+    <target
+        android:name="lock"
+        android:animation="@anim/make_invisible" />
+    <target
+        android:name="lock_open"
+        android:animation="@anim/make_visible" />
+
+</animated-vector>

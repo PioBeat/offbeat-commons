@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="PinPad_Button_Style">
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="PinPad_Circle_Style">
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
 </resources>
