@@ -3,6 +3,7 @@ package net.offbeatpioneer.android.components;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -36,7 +37,7 @@ public class LabeledTextView extends LinearLayout {
         @SuppressWarnings("ResourceAsColor")
         int textColor = a.getColor(R.styleable.LabeledTextView_textColor,
                 Color.parseColor("#ff444444"));
-        a.recycle();
+//        a.recycle();
 
         setOrientation(LinearLayout.VERTICAL);
         setGravity(Gravity.CENTER_VERTICAL);
@@ -55,6 +56,27 @@ public class LabeledTextView extends LinearLayout {
 
         labelTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, labelFontsize);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textFontsize);
+
+        if (attrs != null) {
+            try {
+                String fontName = a.getString(R.styleable.LabeledTextView_textFont);
+                String fontNameTitle = a.getString(R.styleable.LabeledTextView_titleFont);
+
+
+                if (fontName != null) {
+                    Typeface myTypeface = Typeface.createFromAsset(getContext().getAssets(), fontName);
+                    textView.setTypeface(myTypeface);
+                }
+                if (fontNameTitle != null) {
+                    Typeface myTypeface = Typeface.createFromAsset(getContext().getAssets(), fontNameTitle);
+                    labelTextView.setTypeface(myTypeface);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        a.recycle();
     }
 
     public void setLabelText(CharSequence text) {

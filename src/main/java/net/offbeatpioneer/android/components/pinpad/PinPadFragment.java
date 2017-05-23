@@ -49,7 +49,6 @@ public class PinPadFragment extends Fragment implements View.OnClickListener {
      *
      * @return A new instance of fragment PinPadFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static PinPadFragment newInstance(PinData pinData, boolean showSuccessFragment) {
         PinPadFragment fragment = new PinPadFragment();
         Bundle args = new Bundle();
@@ -98,7 +97,6 @@ public class PinPadFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onCompletedInteraction(uri);
@@ -196,7 +194,10 @@ public class PinPadFragment extends Fragment implements View.OnClickListener {
         void onWrongPin();
     }
 
-    protected interface PinPadInteraction {
+    /**
+     * Only for intern communication between the {@link PinPadView} and this fragment.
+     */
+    interface PinPadInteraction {
         void interaction();
     }
 }
