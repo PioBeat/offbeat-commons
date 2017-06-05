@@ -2,6 +2,8 @@
 <resources>
     <declare-styleable name="OffbeatTextView">
         <attr name="font" format="string" />
+        <attr name="characterDelay" format="integer" />
+        <attr name="loopTypewriter" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="LabeledTextView">
