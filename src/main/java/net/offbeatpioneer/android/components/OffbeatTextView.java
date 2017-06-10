@@ -83,6 +83,15 @@ public class OffbeatTextView extends TextView {
         }
     };
 
+    /**
+     *
+     * @param fontName filename path of the font file in the assets folder
+     */
+    public void setFont(String fontName) {
+        Typeface myTypeface = Typeface.createFromAsset(getContext().getAssets(), fontName);
+        setTypeface(myTypeface);
+    }
+
     public void animateText() {
         this.animateText(getText());
     }
