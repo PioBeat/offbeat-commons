@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatImageView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +90,12 @@ public class PinPadFragment extends Fragment implements View.OnClickListener {
         pinContent.removeAllViews();
         pinCountList.clear();
         for (int i = 0; i < pinData.getPinLength(); i++) {
-            ImageView circle = new ImageView(getContext(), null, 0, R.style.PinPad_Circle_Style);
+            ImageView circle;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                circle = new ImageView(getContext(), null, 0, R.style.PinPad_Circle_Style);
+            } else {
+                circle = new AppCompatImageView(getContext(), null, 0);
+            }
             circle.setBackgroundResource(R.drawable.shape_pin_circle);
             pinContent.addView(circle);
             pinCountList.add(circle);
