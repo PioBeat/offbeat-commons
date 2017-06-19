@@ -7,7 +7,7 @@ ext {
     artifact = 'offbeat-commons' // equal to the name of the Android Studio library module
 
     libraryDescription = ''
-    libraryVersion = '0.3.3'
+    libraryVersion = '0.3.4'
     libraryVersionCode = 2
 
     siteUrl = 'https://github.com/PioBeat/offbeat-commons'
