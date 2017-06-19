@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A PinPad fragment.
+ * <p>
  * Activities that contain this fragment must implement the
  * {@link PinPadFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
@@ -48,6 +49,8 @@ public class PinPadFragment extends Fragment implements View.OnClickListener {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
+     * @param pinData
+     * @param showSuccessFragment
      * @return A new instance of fragment PinPadFragment.
      */
     public static PinPadFragment newInstance(PinData pinData, boolean showSuccessFragment) {
