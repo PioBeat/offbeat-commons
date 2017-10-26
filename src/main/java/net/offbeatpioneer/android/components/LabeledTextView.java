@@ -27,15 +27,15 @@ public class LabeledTextView extends LinearLayout {
         super(context, attrs);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LabeledTextView, 0, 0);
-        String titleText = a.getString(R.styleable.LabeledTextView_label);
-        String text = a.getString(R.styleable.LabeledTextView_text);
-        float labelFontsize = a.getDimensionPixelSize(R.styleable.LabeledTextView_labelFontSize, 14);
-        float textFontsize = a.getDimensionPixelSize(R.styleable.LabeledTextView_textFontSize, 12);
+        String titleText = a.getString(R.styleable.LabeledTextView_ofpLabel);
+        String text = a.getString(R.styleable.LabeledTextView_ofpText);
+        float labelFontsize = a.getDimensionPixelSize(R.styleable.LabeledTextView_ofpLabelFontSize, 14);
+        float textFontsize = a.getDimensionPixelSize(R.styleable.LabeledTextView_ofpTextFontSize, 12);
         @SuppressWarnings("ResourceAsColor")
-        int labelColor = a.getColor(R.styleable.LabeledTextView_labelColor,
+        int labelColor = a.getColor(R.styleable.LabeledTextView_ofpLabelColor,
                 Color.parseColor("#ff444444"));
         @SuppressWarnings("ResourceAsColor")
-        int textColor = a.getColor(R.styleable.LabeledTextView_textColor,
+        int textColor = a.getColor(R.styleable.LabeledTextView_ofpTextColor,
                 Color.parseColor("#ff444444"));
 //        a.recycle();
 
@@ -59,8 +59,8 @@ public class LabeledTextView extends LinearLayout {
 
         if (attrs != null) {
             try {
-                String fontName = a.getString(R.styleable.LabeledTextView_textFont);
-                String fontNameTitle = a.getString(R.styleable.LabeledTextView_titleFont);
+                String fontName = a.getString(R.styleable.LabeledTextView_ofpTextFont);
+                String fontNameTitle = a.getString(R.styleable.LabeledTextView_ofpTitleFont);
 
 
                 if (fontName != null) {

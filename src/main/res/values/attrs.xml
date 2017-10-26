@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="OffbeatTextView">
-        <attr name="font" format="string" />
-        <attr name="characterDelay" format="integer" />
-        <attr name="loopTypewriter" format="boolean" />
+        <attr name="ofpFont" format="string" />
+        <attr name="ofpCharacterDelay" format="integer" />
+        <attr name="ofpLoopTypewriter" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="LabeledTextView">
-        <attr name="label" format="string" localization="suggested" />
-        <attr name="text" format="string" localization="suggested" />
-        <attr name="labelFontSize" format="dimension" />
-        <attr name="textFontSize" format="dimension" />
-        <attr name="labelColor" format="color" />
-        <attr name="textColor" format="color" />
-        <attr name="textFont" format="string" />
-        <attr name="titleFont" format="string" />
+        <attr name="ofpLabel" format="string" localization="suggested" />
+        <attr name="ofpText" format="string" localization="suggested" />
+        <attr name="ofpLabelFontSize" format="dimension" />
+        <attr name="ofpTextFontSize" format="dimension" />
+        <attr name="ofpLabelColor" format="color" />
+        <attr name="ofpTextColor" format="color" />
+        <attr name="ofpTextFont" format="string" />
+        <attr name="ofpTitleFont" format="string" />
     </declare-styleable>
 </resources>

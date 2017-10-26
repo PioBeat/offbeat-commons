@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.3.5]
+
+### Changed
+- ``OffbeatButton``, ``OffbeatTextView``: argument _font_ is now a path to the font file.
+The components will not look anymore in the _font_ directory of the
+assets folder. Instead you have to specify the full path to the font file.
+
+- update library SDK version to 26 and dependencies accordingly. Also
+updated gradle plugin to version 3.0.0
+
+- added prefix *ofp* to all atributes for components:
+    * ``LabeledTextView``
+    * ``OffbeatTextView``
+    * ``OffbeatButton``
+
+to avoid issues with "_Attribute 'ATTRIBUTE_NAME' already defined with incompatible format_".
+
+Example: ``label`` becomes ``ofpLabel``
+         ``text`` becomes ``ofpText``
+
+
+
 ## [0.3.4]
 
 ### New

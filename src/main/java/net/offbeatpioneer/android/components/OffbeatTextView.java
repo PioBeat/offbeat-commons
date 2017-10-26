@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
@@ -13,7 +14,7 @@ import android.widget.TextView;
  * @author Dominik Grzelak
  * @since 06.10.2016.
  */
-public class OffbeatTextView extends TextView {
+public class OffbeatTextView extends AppCompatTextView {
     private static final String TAG = OffbeatTextView.class.getSimpleName();
 
     Handler completeCallbackHandler;
@@ -37,22 +38,17 @@ public class OffbeatTextView extends TextView {
         init(attrs);
     }
 
-    public OffbeatTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(attrs);
-    }
-
     private void init(AttributeSet attrs) {
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.OffbeatTextView);
 
-            this.delay = a.getInteger(R.styleable.OffbeatTextView_characterDelay, (int) this.delay);
-            this.loopTyperwriter = a.getBoolean(R.styleable.OffbeatTextView_loopTypewriter, this.loopTyperwriter);
+            this.delay = a.getInteger(R.styleable.OffbeatTextView_ofpCharacterDelay, (int) this.delay);
+            this.loopTyperwriter = a.getBoolean(R.styleable.OffbeatTextView_ofpLoopTypewriter, this.loopTyperwriter);
 
-            String fontName = a.getString(R.styleable.OffbeatTextView_font);
+            String fontPath = a.getString(R.styleable.OffbeatTextView_ofpFont);
             try {
-                if (fontName != null) {
-                    Typeface myTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/" + fontName);
+                if (fontPath != null) {
+                    Typeface myTypeface = Typeface.createFromAsset(getContext().getAssets(), fontPath);
                     setTypeface(myTypeface);
                 }
             } catch (Exception e) {
@@ -84,7 +80,6 @@ public class OffbeatTextView extends TextView {
     };
 
     /**
-     *
      * @param fontName filename path of the font file in the assets folder
      */
     public void setFont(String fontName) {
