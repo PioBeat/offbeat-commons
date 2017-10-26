@@ -25,7 +25,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.stylingandroid.viewpageranimator:viewpageranimator:1.0.0'
@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:gridlayout-v7:26.1.0'
     implementation 'com.android.support:support-vector-drawable:26.1.0'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 // local "publish" of library
 task copyToLib(type: Copy) {
@@ -52,4 +52,4 @@ build.dependsOn copyToLib
 //apply from: 'https://raw.githubusercontent.com/attwellBrian/JCenter/master/installv1.gradle'
 //apply from: 'https://raw.githubusercontent.com/attwellBrian/JCenter/master/bintrayv1.gradle'
 apply from: './install.gradle'
-//apply from: './bintray.gradle'
+apply from: './bintray.gradle'
