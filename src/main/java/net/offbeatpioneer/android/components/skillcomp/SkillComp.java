@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -17,12 +16,30 @@ import android.widget.LinearLayout;
 import net.offbeatpioneer.android.components.R;
 
 /**
- * Skill bar
+ * Horizontal progressbar with support for animation.
+ * <p>
+ * You can set the number of elements for this progressbar by adjusting the <b>maxLevels</b> attribute
+ * with the {@link SkillComp#setMaxLevels(int)} method.
+ * If more levels are defined than colors, the colors will be recycled. If no custom colors are
+ * set the preset color array consisting of 5 colors will be used.
+ * <p>
+ * By setting <b>withAnimation</b> to {@code false} you can disable the filling animation for this
+ * progressbar. The progressbar will be instantly visible. Set the duration of the animation with
+ * <b>animationDuration</b> (default is 5000). Specify with <b>autoStartAnimation</b> whether the
+ * animation should be started automatically after the view is created (defaults to {@code true}).
+ * A margin for each element of the progressbar can be set by <b>elementMargin</b>.
+ * <p>
+ * If <b>autoStartAnimation</b> is set to {@code false} you can start the animation by yourself by
+ * calling the {@link SkillComp#startAnimation()}. Add a component listener with {@link SkillComp#addComponentListener(ComponentListener)}
+ * to listen when the animation finishes.
  *
  * @author Dominik Grzelak
  * @since 19.02.2018.
  */
 public class SkillComp extends LinearLayout {
+    /**
+     * empty listener implementation if no listener is set
+     */
     private static final ComponentListener INSTANCE = new ComponentListener() {
         @Override
         public void onAnimationComplete() {
@@ -30,12 +47,23 @@ public class SkillComp extends LinearLayout {
         }
     };
 
-    int maxLevels;
-    int elementMargin;
-    int elementHeight = -2;
+    /**
+     * Default duration for the animation
+     */
+    private static final int DEFAULT_DURATION = 5000;
+    /**
+     * Default margin in pixels
+     */
+    private static final int DEFAULT_MARGIN = 0;
+
+    private static final int DEFAULT_LEVEL_COUNT = 5;
+
+    private int maxLevels;
+    private int elementMargin;
+    private int elementHeight = -2;
     private boolean withAnimation = true;
     private boolean autoStartAnimation = true;
-    private int animationDuration = 5000;
+    private int animationDuration;
     private ViewGroup content;
     private ComponentListener listener = INSTANCE;
 
@@ -72,10 +100,10 @@ public class SkillComp extends LinearLayout {
 
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.SkillComp, 0, 0);
 
-        maxLevels = a.getInt(R.styleable.SkillComp_ofpMaxLevels, 5);
-        elementMargin = a.getDimensionPixelSize(R.styleable.SkillComp_ofpElementMargin, 0);
+        maxLevels = a.getInt(R.styleable.SkillComp_ofpMaxLevels, DEFAULT_LEVEL_COUNT);
+        elementMargin = a.getDimensionPixelSize(R.styleable.SkillComp_ofpElementMargin, DEFAULT_MARGIN);
         withAnimation = a.getBoolean(R.styleable.SkillComp_ofpWithAnimation, true);
-        animationDuration = a.getInteger(R.styleable.SkillComp_ofpAnimationDuration, 5000);
+        animationDuration = a.getInteger(R.styleable.SkillComp_ofpAnimationDuration, DEFAULT_DURATION);
         autoStartAnimation = a.getBoolean(R.styleable.SkillComp_ofpAutoStartAnimation, true);
         a.recycle();
 
@@ -118,39 +146,79 @@ public class SkillComp extends LinearLayout {
         if (autoStartAnimation) startAnimation();
     }
 
+    /**
+     * Return the number of elements for the progressbar.
+     *
+     * @return number of elements of the progressbar
+     */
     public int getMaxLevels() {
         return maxLevels;
     }
 
+    /**
+     * Set the number of elements for the progressbar
+     *
+     * @param maxLevels number of elements for the progressbar
+     */
     public void setMaxLevels(int maxLevels) {
         this.maxLevels = maxLevels;
         ((LinearLayout) content).setWeightSum(this.maxLevels);
     }
 
+    /**
+     * Get the colors that are used for the elements
+     *
+     * @return colors for the progressbar
+     */
     public int[] getColors() {
         return colors;
+    }
+
+    /**
+     * Set the colors that should be used for the progressbar.
+     * The colors are recycled if {@code colors.length < maxLevels}
+     *
+     * @param colors the colors for the progressbar
+     */
+    public void setColors(@NonNull int[] colors) {
+        this.colors = colors;
     }
 
     public ComponentListener getListener() {
         return listener;
     }
 
+    /**
+     * Add a listener to listened for events
+     *
+     * @param listener the listener to add
+     */
     public void addComponentListener(@NonNull ComponentListener listener) {
         this.listener = listener;
     }
 
-    public void setColors(@NonNull int[] colors) {
-        this.colors = colors;
-    }
-
+    /**
+     * Check if the progressbar should play the animation.
+     *
+     * @return true, if the animation is enabled, otherwise false
+     */
     public boolean isWithAnimation() {
         return withAnimation;
     }
 
+    /**
+     * Specify if the progressbar should be play the animation. If {@code false} the elements
+     * of the progressbar are instantly visible.
+     *
+     * @param withAnimation true for the animation for displaying the progressbar.
+     */
     public void setWithAnimation(boolean withAnimation) {
         this.withAnimation = withAnimation;
     }
 
+    /**
+     * Start the animation for the progressbar. Works only if {@code withAnimation == true}.
+     */
     public void startAnimation() {
         if (!withAnimation) return;
         long eachDuration = animationDuration / maxLevels;
