@@ -1,5 +1,6 @@
 package net.offbeatpioneer.android.components.skillcomp;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.widget.LinearLayout;
 
 import net.offbeatpioneer.android.components.R;
@@ -21,6 +23,13 @@ import net.offbeatpioneer.android.components.R;
  * @since 19.02.2018.
  */
 public class SkillComp extends LinearLayout {
+    private static final ComponentListener INSTANCE = new ComponentListener() {
+        @Override
+        public void onAnimationComplete() {
+
+        }
+    };
+
     int maxLevels;
     int elementMargin;
     int elementHeight = -2;
@@ -28,6 +37,7 @@ public class SkillComp extends LinearLayout {
     private boolean autoStartAnimation = true;
     private int animationDuration = 5000;
     private ViewGroup content;
+    private ComponentListener listener = INSTANCE;
 
     private final int[] DEFAULT_COLORS = new int[]{Color.rgb(217, 83, 79),
             Color.rgb(230, 211, 133),
@@ -36,6 +46,10 @@ public class SkillComp extends LinearLayout {
             Color.rgb(16, 35, 54)};
 
     private int[] colors;
+
+    public interface ComponentListener {
+        void onAnimationComplete();
+    }
 
     public SkillComp(Context context) {
         super(context);
@@ -77,10 +91,6 @@ public class SkillComp extends LinearLayout {
             elementHeight = getResources().getDimensionPixelSize(R.dimen.ofp_skillcomp_default_height);
         }
 
-        content.setLayoutParams(param);
-        content.invalidate();
-        invalidate();
-
         content.removeAllViews();
     }
 
@@ -92,10 +102,20 @@ public class SkillComp extends LinearLayout {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        final int width = getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec);
+        final int height = getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec);
+        final int min = Math.min(width, height);
+        if (elementHeight == -2)
+            elementHeight = min;
+    }
+
+    @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         createLayout();
-        if(autoStartAnimation) startAnimation();
+        if (autoStartAnimation) startAnimation();
     }
 
     public int getMaxLevels() {
@@ -109,6 +129,14 @@ public class SkillComp extends LinearLayout {
 
     public int[] getColors() {
         return colors;
+    }
+
+    public ComponentListener getListener() {
+        return listener;
+    }
+
+    public void addComponentListener(@NonNull ComponentListener listener) {
+        this.listener = listener;
     }
 
     public void setColors(@NonNull int[] colors) {
@@ -127,7 +155,29 @@ public class SkillComp extends LinearLayout {
         if (!withAnimation) return;
         long eachDuration = animationDuration / maxLevels;
         for (int i = 0, n = content.getChildCount(); i < n; i++) {
-            content.getChildAt(i).animate().alpha(1f).setDuration(eachDuration).setStartDelay(i * eachDuration / 2).start();
+            ViewPropertyAnimator animator = content.getChildAt(i).animate();
+            if (i == n - 1)
+                animator.setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        listener.onAnimationComplete();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
+            animator.alpha(1f).setDuration(eachDuration).setStartDelay(i * eachDuration / 2).start();
         }
     }
 
@@ -139,8 +189,7 @@ public class SkillComp extends LinearLayout {
                 1.0f
         );
         param.weight = 1;
-        if (elementHeight != -2)
-            param.height = elementHeight;
+        param.height = elementHeight;
         param.setMargins(elementMargin, elementMargin, elementMargin, elementMargin);
         elem.setLayoutParams(param);
         elem.setBackgroundColor(color);
