@@ -23,6 +23,7 @@ public class OffbeatTextView extends AppCompatTextView {
     private int index;
     private long delay = 250;
     private boolean loopTyperwriter = false;
+    private Runnable characterAdder;
 
     public OffbeatTextView(Context context) {
         super(context);
@@ -43,7 +44,7 @@ public class OffbeatTextView extends AppCompatTextView {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.OffbeatTextView);
 
             this.delay = a.getInteger(R.styleable.OffbeatTextView_ofpCharacterDelay, (int) this.delay);
-            this.loopTyperwriter = a.getBoolean(R.styleable.OffbeatTextView_ofpLoopTypewriter, this.loopTyperwriter);
+            setLoopTyperwriter(a.getBoolean(R.styleable.OffbeatTextView_ofpLoopTypewriter, this.loopTyperwriter));
 
             String fontPath = a.getString(R.styleable.OffbeatTextView_ofpFont);
             try {
@@ -59,25 +60,28 @@ public class OffbeatTextView extends AppCompatTextView {
         }
     }
 
-    private Runnable characterAdder = new Runnable() {
+    private void initCharacterAdder() {
+        if (characterAdder != null) return;
+        characterAdder = new Runnable() {
 
-        @Override
-        public void run() {
-            setText(text.subSequence(0, index++));
-            if (index <= text.length()) {
-                handler.postDelayed(characterAdder, delay);
-            } else {
-                if (null != completeCallbackHandler) {
-                    completeCallbackHandler.sendMessage(new Message());
-                    if (loopTyperwriter) {
-                        index = 0;
-                        animateText();
-                    }
-                } else
-                    Log.d(TAG, "Complete callback handler not set. Cannot send message.");
+            @Override
+            public void run() {
+                setText(text.subSequence(0, index++));
+                if (index <= text.length()) {
+                    handler.postDelayed(characterAdder, delay);
+                } else {
+                    if (null != completeCallbackHandler) {
+                        completeCallbackHandler.sendEmptyMessage(0);
+                        if (loopTyperwriter) {
+                            index = 0;
+                            animateText();
+                        }
+                    } else
+                        Log.d(TAG, "Complete callback handler not set. Cannot send message.");
+                }
             }
-        }
-    };
+        };
+    }
 
     /**
      * @param fontName filename path of the font file in the assets folder
@@ -94,8 +98,8 @@ public class OffbeatTextView extends AppCompatTextView {
     public void animateText(CharSequence txt) {
         text = txt;
         index = 0;
-
         setText("");
+        initCharacterAdder();
         handler.removeCallbacks(characterAdder);
         handler.postDelayed(characterAdder, delay);
     }
@@ -131,6 +135,9 @@ public class OffbeatTextView extends AppCompatTextView {
 
     public void setLoopTyperwriter(boolean loopTyperwriter) {
         this.loopTyperwriter = loopTyperwriter;
+        if (this.loopTyperwriter) {
+            initCharacterAdder();
+        }
     }
 
     @Override

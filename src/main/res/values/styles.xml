@@ -17,4 +17,7 @@
         <item name="android:layout_margin">4dp</item>
     </style>
 
+    <style name="Ofp_SkillComp_Style">
+    </style>
+
 </resources>

@@ -16,4 +16,13 @@
         <attr name="ofpTextFont" format="string" />
         <attr name="ofpTitleFont" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="SkillComp">
+        <attr name="ofpMaxLevels" format="integer"/>
+        <attr name="ofpColors" format="string"/>
+        <attr name="ofpElementMargin" format="dimension"/>
+        <attr name="ofpWithAnimation" format="boolean"/>
+        <attr name="ofpAnimationDuration" format="integer"/>
+        <attr name="ofpAutoStartAnimation" format="boolean"/>
+    </declare-styleable>
 </resources>
