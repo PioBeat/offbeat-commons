@@ -17,12 +17,16 @@
         <attr name="ofpTitleFont" format="string" />
     </declare-styleable>
 
-    <declare-styleable name="SkillComp">
-        <attr name="ofpMaxLevels" format="integer"/>
-        <attr name="ofpColors" format="string"/>
-        <attr name="ofpElementMargin" format="dimension"/>
-        <attr name="ofpWithAnimation" format="boolean"/>
-        <attr name="ofpAnimationDuration" format="integer"/>
-        <attr name="ofpAutoStartAnimation" format="boolean"/>
+    <declare-styleable name="DiscreteValueBar">
+        <attr name="ofpMaxLevels" format="integer" />
+        <attr name="ofpSelectedIndex" format="integer" />
+        <attr name="ofpColors" format="string" />
+        <attr name="ofpElementMargin" format="dimension" />
+        <attr name="ofpWithAnimation" format="boolean" />
+        <attr name="ofpAnimationDuration" format="integer" />
+        <attr name="ofpAutoStartAnimation" format="boolean" />
+        <attr name="ofpBorderWidth" format="dimension" />
+        <attr name="ofpBorderRadius" format="dimension" />
+        <attr name="ofpBorderColor" format="color" />
     </declare-styleable>
 </resources>
