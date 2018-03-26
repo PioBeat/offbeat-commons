@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0]
+
+### Added
+- **new component**: ``DiscreteValueBar`` - A progressbar for discrete values with a horizontal and vertical layout.
+View is customizable.
+
 ## [0.3.5]
 
 ### Changed
