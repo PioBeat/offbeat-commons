@@ -5,9 +5,12 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 
 /**
- * The default implementation for the active element strategy. Makes
- * not activated elements slightly opaque. That means if {@link DiscreteValueBar#getSelectedElement()}
+ * The default implementation of {@link AbstractElementAppearanceStrategy} to animate elements of the
+ * component.<br>
+ * Makes deactivated elements slightly transparent. That means if {@link DiscreteValueBar#getSelectedElement()}
  * isn't <i>-1</i>.
+ * <p>
+ * If the animation starts, the elements will get opaque one by one.
  *
  * @author Dominik Grzelak
  * @since 20.02.2018.
@@ -19,7 +22,7 @@ public class OpaqueAppearanceStrategy extends AbstractElementAppearanceStrategy 
     }
 
     @Override
-    public void deactivatedElement(View view, int currentIndex) {
+    public void showElement(View view, int currentIndex) {
         if (discreteValueBar.isWithAnimation()) {
             float startAlpha = DiscreteValueBar.DEFAULT_OPAQUE_ELEMENT;
             if (currentIndex > discreteValueBar.getSelectedElement()) {

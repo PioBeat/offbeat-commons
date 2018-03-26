@@ -16,12 +16,16 @@ public abstract class AbstractElementAppearanceStrategy {
     }
 
     /**
-     * Implement this method to change the appearance of an element for the {@link DiscreteValueBar}
+     * Implement this method to change the appearance of an element for the {@link DiscreteValueBar}.
+     * <p>
+     * If elements are animated, you should take into consideration that the elements are first in
+     * a "deactivated state" and only after {@link AbstractElementAppearanceStrategy#animatedElement(View, int, int)}
+     * is called, the elements get "visible".
      *
      * @param view         the current view
      * @param currentIndex the index of the view in the layout
      */
-    public abstract void deactivatedElement(View view, int currentIndex);
+    public abstract void showElement(View view, int currentIndex);
 
     /**
      * If the progressbar is animated, implement this method to define the behaviour of the animation.
