@@ -21,14 +21,14 @@
 
     <View
         android:layout_width="0dp"
-        android:background="@color/rippelColor"
+        android:background="#FFFFFF"
         android:layout_weight="1"
         android:layout_height="match_parent"/>
 
     <View
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:background="@color/cardview_shadow_start_color"
+        android:background="#37000000"
         android:layout_height="match_parent"/>
 
 </merge>
