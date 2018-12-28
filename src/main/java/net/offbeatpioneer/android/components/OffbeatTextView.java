@@ -69,12 +69,12 @@ public class OffbeatTextView extends AppCompatTextView {
                 if (index <= text.length()) {
                     handler.postDelayed(characterAdder, delay);
                 } else {
+                    if (loopTyperwriter) {
+                        index = 0;
+                        animateText();
+                    }
                     if (null != completeCallbackHandler) {
                         completeCallbackHandler.sendEmptyMessage(0);
-                        if (loopTyperwriter) {
-                            index = 0;
-                            animateText();
-                        }
                     } else
                         Log.d(TAG, "Complete callback handler not set. Cannot send message.");
                 }
@@ -108,26 +108,32 @@ public class OffbeatTextView extends AppCompatTextView {
      *
      * @param delay milliseconds
      */
+    @SuppressWarnings("unused")
     public void setCharacterDelay(long delay) {
         this.delay = delay;
     }
 
+    @SuppressWarnings("unused")
     public Handler getCompleteCallbackHandler() {
         return completeCallbackHandler;
     }
 
+    @SuppressWarnings("unused")
     public void setCompleteCallbackHandler(Handler completeCallbackHandler) {
         this.completeCallbackHandler = completeCallbackHandler;
     }
 
+    @SuppressWarnings("unused")
     public long getDelay() {
         return delay;
     }
 
+    @SuppressWarnings("unused")
     public void setDelay(long delay) {
         this.delay = delay;
     }
 
+    @SuppressWarnings("unused")
     public boolean isLoopTyperwriter() {
         return loopTyperwriter;
     }
