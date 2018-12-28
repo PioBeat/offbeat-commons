@@ -14,7 +14,7 @@ import java.util.Properties;
  * Read an ini-like file with the help of the {@link Properties} class.
  */
 public class AssetsPropertyReader {
-    public static final String TAG = "AssetsPropertyReader";
+    private static final String TAG = "AssetsPropertyReader";
     private Context context;
     private Properties properties;
 

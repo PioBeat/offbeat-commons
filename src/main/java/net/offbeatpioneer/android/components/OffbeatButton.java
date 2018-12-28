@@ -3,10 +3,9 @@ package net.offbeatpioneer.android.components;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatButton;
 
 /**
  * @author Dominik Grzelak

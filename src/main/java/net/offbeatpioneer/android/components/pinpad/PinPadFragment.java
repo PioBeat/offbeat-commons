@@ -4,8 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.AppCompatImageView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,9 @@ import net.offbeatpioneer.android.components.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.fragment.app.Fragment;
 
 /**
  * A PinPad fragment.
