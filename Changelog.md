@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.5.0]
+
+Migration to androidx
+
 ## [0.4.0]
 
 ### Added
