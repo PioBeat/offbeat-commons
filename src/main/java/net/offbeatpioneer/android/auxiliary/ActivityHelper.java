@@ -86,15 +86,16 @@ public class ActivityHelper {
     }
 
     //source: http://www.codejava.net/coding/how-to-calculate-md5-and-sha-hash-values-in-java
-
+    //TODO change to char array
     public static String generateSHA256(String message) throws Exception {
         return hashString(message, "SHA-256");
     }
-
+    //TODO change to char array
     public static String generateSHA1(String message) throws Exception {
         return hashString(message, "SHA-1");
     }
 
+    //TODO change to char array
     private static String hashString(String message, String algorithm)
             throws Exception {
 

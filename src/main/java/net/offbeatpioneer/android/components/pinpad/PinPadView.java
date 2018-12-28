@@ -5,10 +5,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -16,6 +12,11 @@ import android.widget.LinearLayout;
 
 import net.offbeatpioneer.android.auxiliary.FragmentViewSlidePagerAdapter;
 import net.offbeatpioneer.android.components.R;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+import androidx.viewpager.widget.ViewPager;
 
 
 /**
