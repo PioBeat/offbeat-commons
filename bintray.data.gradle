@@ -6,7 +6,7 @@ ext {
     libraryName = 'OffbeatCommon'
     artifact = 'offbeat-commons' // equal to the name of the Android Studio library module
 
-    libraryDescription = ''
+    libraryDescription = 'Android library with helper methods and view components'
     libraryVersion = '0.5.0'
     libraryVersionCode = 6
 
