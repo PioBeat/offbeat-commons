@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -13,6 +12,7 @@ import android.widget.LinearLayout;
 import net.offbeatpioneer.android.auxiliary.FragmentViewSlidePagerAdapter;
 import net.offbeatpioneer.android.components.R;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
